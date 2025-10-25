@@ -1,0 +1,5 @@
+config.py
+data
+models_pictures
+models_docs
+flask_session

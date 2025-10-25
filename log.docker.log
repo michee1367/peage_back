@@ -1,0 +1,307 @@
+Attaching to db_anser, flask_app
+db_anser   | 
+db_anser   | PostgreSQL Database directory appears to contain a database; Skipping initialization
+db_anser   | 
+db_anser   | 2024-12-04 15:05:04.634 UTC [1] LOG:  starting PostgreSQL 13.5 (Debian 13.5-1.pgdg110+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 10.2.1-6) 10.2.1 20210110, 64-bit
+db_anser   | 2024-12-04 15:05:04.634 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+db_anser   | 2024-12-04 15:05:04.634 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+db_anser   | 2024-12-04 15:05:04.644 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+db_anser   | 2024-12-04 15:05:04.658 UTC [26] LOG:  database system was shut down at 2024-12-04 08:23:08 UTC
+db_anser   | 2024-12-04 15:05:04.670 UTC [1] LOG:  database system is ready to accept connections
+db_anser   | 2024-12-04 15:05:15.647 UTC [33] FATAL:  database "anser_db" does not exist
+flask_app  | /app/models
+flask_app  | /app/models/DrinkingWaterSupply
+flask_app  | /app/models/EntityAdministration
+flask_app  | /app/models/Education
+flask_app  | /app/models/ExistingPlants
+flask_app  | /app/models/ExistingPowerLines
+flask_app  | /app/models/Health
+flask_app  | /app/models/IndividualSets
+flask_app  | /app/models/LocalEconomy
+flask_app  | /app/models/MultiSectorData
+flask_app  | /app/models/PlacesOfWorship
+flask_app  | /app/models/Projects
+flask_app  | /app/models/SolarAndWindPotential
+flask_app  | /app/models/Telecommunication
+flask_app  | /app/models/WaysOfCommunication
+flask_app  | Traceback (most recent call last):
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+flask_app  |     self._dbapi_connection = engine.raw_connection()
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 3293, in raw_connection
+flask_app  |     return self.pool.connect()
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 452, in connect
+flask_app  |     return _ConnectionFairy._checkout(self)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 1268, in _checkout
+flask_app  |     fairy = _ConnectionRecord.checkout(pool)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 716, in checkout
+flask_app  |     rec = pool._do_get()
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/impl.py", line 169, in _do_get
+flask_app  |     self._dec_overflow()
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/util/langhelpers.py", line 147, in __exit__
+flask_app  |     raise exc_value.with_traceback(exc_tb)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/impl.py", line 166, in _do_get
+flask_app  |     return self._create_connection()
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 393, in _create_connection
+flask_app  |     return _ConnectionRecord(self)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 678, in __init__
+flask_app  |     self.__connect()
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 903, in __connect
+flask_app  |     pool.logger.debug("Error on connect(): %s", e)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/util/langhelpers.py", line 147, in __exit__
+flask_app  |     raise exc_value.with_traceback(exc_tb)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 898, in __connect
+flask_app  |     self.dbapi_connection = connection = pool._invoke_creator(self)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/engine/create.py", line 637, in connect
+flask_app  |     return dialect.connect(*cargs, **cparams)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 616, in connect
+flask_app  |     return self.loaded_dbapi.connect(*cargs, **cparams)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/psycopg2/__init__.py", line 122, in connect
+flask_app  |     conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+flask_app  | psycopg2.OperationalError: connection to server at "db" (172.18.0.2), port 5432 failed: FATAL:  database "anser_db" does not exist
+flask_app  | 
+flask_app  | 
+flask_app  | The above exception was the direct cause of the following exception:
+flask_app  | 
+flask_app  | Traceback (most recent call last):
+flask_app  |   File "/usr/local/bin/flask", line 8, in <module>
+flask_app  |     sys.exit(main())
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/flask/cli.py", line 1063, in main
+flask_app  |     cli.main()
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/click/core.py", line 1055, in main
+flask_app  |     rv = self.invoke(ctx)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/click/core.py", line 1657, in invoke
+flask_app  |     return _process_result(sub_ctx.command.invoke(sub_ctx))
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/click/core.py", line 1657, in invoke
+flask_app  |     return _process_result(sub_ctx.command.invoke(sub_ctx))
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/click/core.py", line 1404, in invoke
+flask_app  |     return ctx.invoke(self.callback, **ctx.params)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/click/core.py", line 760, in invoke
+flask_app  |     return __callback(*args, **kwargs)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/click/decorators.py", line 26, in new_func
+flask_app  |     return f(get_current_context(), *args, **kwargs)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/flask/cli.py", line 357, in decorator
+flask_app  |     return __ctx.invoke(f, *args, **kwargs)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/click/core.py", line 760, in invoke
+flask_app  |     return __callback(*args, **kwargs)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/flask_migrate/cli.py", line 150, in upgrade
+flask_app  |     _upgrade(directory, revision, sql, tag, x_arg)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/flask_migrate/__init__.py", line 111, in wrapped
+flask_app  |     f(*args, **kwargs)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/flask_migrate/__init__.py", line 200, in upgrade
+flask_app  |     command.upgrade(config, revision, sql=sql, tag=tag)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/alembic/command.py", line 385, in upgrade
+flask_app  |     script.run_env()
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/alembic/script/base.py", line 582, in run_env
+flask_app  |     util.load_python_file(self.dir, "env.py")
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/alembic/util/pyfiles.py", line 94, in load_python_file
+flask_app  |     module = load_module_py(module_id, path)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/alembic/util/pyfiles.py", line 110, in load_module_py
+flask_app  |     spec.loader.exec_module(module)  # type: ignore
+flask_app  |   File "<frozen importlib._bootstrap_external>", line 850, in exec_module
+flask_app  |   File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+flask_app  |   File "migrations/env.py", line 110, in <module>
+flask_app  |     run_migrations_online()
+flask_app  |   File "migrations/env.py", line 95, in run_migrations_online
+flask_app  |     with connectable.connect() as connection:
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 3269, in connect
+flask_app  |     return self._connection_cls(self)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 147, in __init__
+flask_app  |     Connection._handle_dbapi_exception_noconnection(
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2431, in _handle_dbapi_exception_noconnection
+flask_app  |     raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+flask_app  |     self._dbapi_connection = engine.raw_connection()
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 3293, in raw_connection
+flask_app  |     return self.pool.connect()
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 452, in connect
+flask_app  |     return _ConnectionFairy._checkout(self)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 1268, in _checkout
+flask_app  |     fairy = _ConnectionRecord.checkout(pool)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 716, in checkout
+flask_app  |     rec = pool._do_get()
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/impl.py", line 169, in _do_get
+flask_app  |     self._dec_overflow()
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/util/langhelpers.py", line 147, in __exit__
+flask_app  |     raise exc_value.with_traceback(exc_tb)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/impl.py", line 166, in _do_get
+flask_app  |     return self._create_connection()
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 393, in _create_connection
+flask_app  |     return _ConnectionRecord(self)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 678, in __init__
+flask_app  |     self.__connect()
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 903, in __connect
+flask_app  |     pool.logger.debug("Error on connect(): %s", e)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/util/langhelpers.py", line 147, in __exit__
+flask_app  |     raise exc_value.with_traceback(exc_tb)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 898, in __connect
+flask_app  |     self.dbapi_connection = connection = pool._invoke_creator(self)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/engine/create.py", line 637, in connect
+flask_app  |     return dialect.connect(*cargs, **cparams)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 616, in connect
+flask_app  |     return self.loaded_dbapi.connect(*cargs, **cparams)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/psycopg2/__init__.py", line 122, in connect
+flask_app  |     conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+flask_app  | sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "db" (172.18.0.2), port 5432 failed: FATAL:  database "anser_db" does not exist
+flask_app  | 
+flask_app  | (Background on this error at: https://sqlalche.me/e/20/e3q8)
+db_anser   | 2024-12-04 15:05:16.414 UTC [34] FATAL:  database "anser_db" does not exist
+flask_app  | /app/models
+flask_app  | /app/models/DrinkingWaterSupply
+flask_app  | /app/models/EntityAdministration
+flask_app  | /app/models/Education
+flask_app  | /app/models/ExistingPlants
+flask_app  | /app/models/ExistingPowerLines
+flask_app  | /app/models/Health
+flask_app  | /app/models/IndividualSets
+flask_app  | /app/models/LocalEconomy
+flask_app  | /app/models/MultiSectorData
+flask_app  | /app/models/PlacesOfWorship
+flask_app  | /app/models/Projects
+flask_app  | /app/models/SolarAndWindPotential
+flask_app  | /app/models/Telecommunication
+flask_app  | /app/models/WaysOfCommunication
+flask_app  | ./schema/EntityAdministration/Province.json
+flask_app  | 
+flask_app  | Traceback (most recent call last):
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+flask_app  |     self._dbapi_connection = engine.raw_connection()
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 3293, in raw_connection
+flask_app  |     return self.pool.connect()
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 452, in connect
+flask_app  |     return _ConnectionFairy._checkout(self)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 1268, in _checkout
+flask_app  |     fairy = _ConnectionRecord.checkout(pool)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 716, in checkout
+flask_app  |     rec = pool._do_get()
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/impl.py", line 169, in _do_get
+flask_app  |     self._dec_overflow()
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/util/langhelpers.py", line 147, in __exit__
+flask_app  |     raise exc_value.with_traceback(exc_tb)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/impl.py", line 166, in _do_get
+flask_app  |     return self._create_connection()
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 393, in _create_connection
+flask_app  |     return _ConnectionRecord(self)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 678, in __init__
+flask_app  |     self.__connect()
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 903, in __connect
+flask_app  |     pool.logger.debug("Error on connect(): %s", e)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/util/langhelpers.py", line 147, in __exit__
+flask_app  |     raise exc_value.with_traceback(exc_tb)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 898, in __connect
+flask_app  |     self.dbapi_connection = connection = pool._invoke_creator(self)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/engine/create.py", line 637, in connect
+flask_app  |     return dialect.connect(*cargs, **cparams)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 616, in connect
+flask_app  |     return self.loaded_dbapi.connect(*cargs, **cparams)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/psycopg2/__init__.py", line 122, in connect
+flask_app  |     conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+flask_app  | psycopg2.OperationalError: connection to server at "db" (172.18.0.2), port 5432 failed: FATAL:  database "anser_db" does not exist
+flask_app  | 
+flask_app  | 
+flask_app  | The above exception was the direct cause of the following exception:
+flask_app  | 
+flask_app  | Traceback (most recent call last):
+flask_app  |   File "/usr/local/bin/flask", line 8, in <module>
+flask_app  |     sys.exit(main())
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/flask/cli.py", line 1063, in main
+flask_app  |     cli.main()
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/click/core.py", line 1055, in main
+flask_app  |     rv = self.invoke(ctx)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/click/core.py", line 1657, in invoke
+flask_app  |     return _process_result(sub_ctx.command.invoke(sub_ctx))
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/click/core.py", line 1657, in invoke
+flask_app  |     return _process_result(sub_ctx.command.invoke(sub_ctx))
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/click/core.py", line 1404, in invoke
+flask_app  |     return ctx.invoke(self.callback, **ctx.params)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/click/core.py", line 760, in invoke
+flask_app  |     return __callback(*args, **kwargs)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/click/decorators.py", line 26, in new_func
+flask_app  |     return f(get_current_context(), *args, **kwargs)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/flask/cli.py", line 357, in decorator
+flask_app  |     return __ctx.invoke(f, *args, **kwargs)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/click/core.py", line 760, in invoke
+flask_app  |     return __callback(*args, **kwargs)
+flask_app  |   File "/app/commands/loadSchema.py", line 60, in runLoad
+flask_app  |     insert_logic(jsonData)
+flask_app  |   File "/app/services/meta_record_service.py", line 37, in insert_logic
+flask_app  |     recordExist = db.session.execute(db.select(MetaRecord).filter_by(name=data["name"])).first()
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/orm/scoping.py", line 724, in execute
+flask_app  |     return self._proxied.execute(
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2232, in execute
+flask_app  |     return self._execute_internal(
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2117, in _execute_internal
+flask_app  |     conn = self._connection_for_bind(bind)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 1984, in _connection_for_bind
+flask_app  |     return trans._connection_for_bind(engine, execution_options)
+flask_app  |   File "<string>", line 2, in _connection_for_bind
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+flask_app  |     ret_value = fn(self, *arg, **kw)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 1111, in _connection_for_bind
+flask_app  |     conn = bind.connect()
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 3269, in connect
+flask_app  |     return self._connection_cls(self)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 147, in __init__
+flask_app  |     Connection._handle_dbapi_exception_noconnection(
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2431, in _handle_dbapi_exception_noconnection
+flask_app  |     raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+flask_app  |     self._dbapi_connection = engine.raw_connection()
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 3293, in raw_connection
+flask_app  |     return self.pool.connect()
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 452, in connect
+flask_app  |     return _ConnectionFairy._checkout(self)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 1268, in _checkout
+flask_app  |     fairy = _ConnectionRecord.checkout(pool)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 716, in checkout
+flask_app  |     rec = pool._do_get()
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/impl.py", line 169, in _do_get
+flask_app  |     self._dec_overflow()
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/util/langhelpers.py", line 147, in __exit__
+flask_app  |     raise exc_value.with_traceback(exc_tb)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/impl.py", line 166, in _do_get
+flask_app  |     return self._create_connection()
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 393, in _create_connection
+flask_app  |     return _ConnectionRecord(self)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 678, in __init__
+flask_app  |     self.__connect()
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 903, in __connect
+flask_app  |     pool.logger.debug("Error on connect(): %s", e)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/util/langhelpers.py", line 147, in __exit__
+flask_app  |     raise exc_value.with_traceback(exc_tb)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 898, in __connect
+flask_app  |     self.dbapi_connection = connection = pool._invoke_creator(self)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/engine/create.py", line 637, in connect
+flask_app  |     return dialect.connect(*cargs, **cparams)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 616, in connect
+flask_app  |     return self.loaded_dbapi.connect(*cargs, **cparams)
+flask_app  |   File "/usr/local/lib/python3.9/site-packages/psycopg2/__init__.py", line 122, in connect
+flask_app  |     conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+flask_app  | sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "db" (172.18.0.2), port 5432 failed: FATAL:  database "anser_db" does not exist
+flask_app  | 
+flask_app  | (Background on this error at: https://sqlalche.me/e/20/e3q8)
+flask_app  | /app/models
+flask_app  | /app/models/DrinkingWaterSupply
+flask_app  | /app/models/EntityAdministration
+flask_app  | /app/models/Education
+flask_app  | /app/models/ExistingPlants
+flask_app  | /app/models/ExistingPowerLines
+flask_app  | /app/models/Health
+flask_app  | /app/models/IndividualSets
+flask_app  | /app/models/LocalEconomy
+flask_app  | /app/models/MultiSectorData
+flask_app  | /app/models/PlacesOfWorship
+flask_app  | /app/models/Projects
+flask_app  | /app/models/SolarAndWindPotential
+flask_app  | /app/models/Telecommunication
+flask_app  | /app/models/WaysOfCommunication
+flask_app  |  * Serving Flask app 'app.py'
+flask_app  |  * Debug mode: on
+flask_app  | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+flask_app  |  * Running on all addresses (0.0.0.0)
+flask_app  |  * Running on http://127.0.0.1:5000
+flask_app  |  * Running on http://172.18.0.3:5000
+flask_app  | [33mPress CTRL+C to quit[0m
+flask_app  |  * Restarting with stat
+flask_app  |  * Debugger is active!
+flask_app  |  * Debugger PIN: 361-961-772
+Gracefully stopping... (press Ctrl+C again to force)
