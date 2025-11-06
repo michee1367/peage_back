@@ -9,7 +9,8 @@ from models import db
 # ------------------------
 class PosteDePeage(db.Model):
     __tablename__ = "postes_de_peage"
-    __fillables__ = ["nom", "localisation", "date_creation", "voie_id"]
+    __rel_showables__= ["route"]
+    __fillables__ = ["nom", "localisation", "date_creation", "route_id"]
     __showables__= ["nom", "localisation", "date_creation"]
 
     id = db.Column(db.Integer, primary_key=True)
@@ -18,10 +19,12 @@ class PosteDePeage(db.Model):
     date_creation = db.Column(DateTime, default=func.now())
     
     
-    voie_id = db.Column(db.Integer, db.ForeignKey("voies.id"), nullable=False)
-    voie = db.relationship("Voie", back_populates="postes")
+    route_id = db.Column(db.Integer, db.ForeignKey("routes.id"), nullable=False)
+    route = db.relationship("Route", back_populates="postes")
 
     quarts = db.relationship("QuartDeTravail", back_populates="poste", cascade="all, delete-orphan")
+    equipements = db.relationship("Equipement", back_populates="poste", cascade="all, delete-orphan")
+    collectes = db.relationship("Collecte", back_populates="poste", cascade="all, delete-orphan")
     
         
     def getWording(self) :

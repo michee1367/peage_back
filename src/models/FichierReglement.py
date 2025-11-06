@@ -9,11 +9,12 @@ from models import db
 # ------------------------
 class FichierReglement(db.Model):
     __tablename__ = "fichiers_reglement"
-    __fillables__ = ["fournisseur", "date_fichier", "utilisateur_id"]
-    __showables__= ["fournisseur", "date_fichier", "utilisateur_id" ]
+    __fillables__ = ["date_fichier", "utilisateur_id"]
+    __showables__= ["date_fichier", "utilisateur_id" ]
+    __rel_showables__= ["utilisateur", "fournisseur"]
 
     id = db.Column(db.Integer, primary_key=True)
-    fournisseur = db.Column(db.String(255), nullable=False)   # ex: "Airtel Money"
+    #fournisseur = db.Column(db.String(255), nullable=False)   # ex: "Airtel Money"
     date_fichier = db.Column(Date, nullable=False)
     montant_total = db.Column(Numeric(14,2), default=0)
     nombre_lignes = db.Column(db.Integer, default=0)

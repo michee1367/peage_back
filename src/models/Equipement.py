@@ -10,8 +10,8 @@ from models import db
 # ------------------------
 class Equipement(db.Model):
     __tablename__ = "equipements"
-    __fillables__ = ["denomination","type", "numero_serie", "statut", "derniere_communication", "voie_id", "carateristique"]
-    __rel_showables__= ["voie"]
+    __fillables__ = ["denomination","type", "numero_serie", "statut", "derniere_communication", "poste_id", "carateristique"]
+    __rel_showables__= ["poste"]
     __showables__= ["denomination", "type", "numero_serie", "statut", "derniere_communication", "carateristique"]
 
     id = db.Column(db.Integer, primary_key=True)
@@ -22,8 +22,8 @@ class Equipement(db.Model):
     statut = db.Column(db.String(50))
     derniere_communication = db.Column(DateTime)
 
-    voie_id = db.Column(db.Integer, db.ForeignKey("voies.id"), nullable=False)
-    voie = db.relationship("Voie", back_populates="equipements")
+    poste_id = db.Column(db.Integer, db.ForeignKey("postes_de_peage.id"), nullable=False)
+    poste = db.relationship("PosteDePeage", back_populates="equipements")
     
     def getWording(self) :
         return self.denomination

@@ -9,15 +9,16 @@ from models import db
 # ------------------------
 class Transaction(db.Model):
     __tablename__ = "transactions"
-    __rel_showables__= ["quart", "voie"]
-    __fillables__ = ["devise", "montant", "moyen_paiement", 
+    __rel_showables__= ["quart", "categorie", "devise"]
+    __fillables__ = ["devise_id", "montant", "moyen_paiement", 
                      "statut", "plaque", "date_confirmation", 
-                     "reference_externe", "voie_id", "quart_id"]
-    __showables__= ["devise", "montant", "moyen_paiement", "statut", "plaque", "date_creation", "date_confirmation", "reference_externe"]
+                     "reference_externe", "quart_id", "categorie_id"]
+    __showables__= ["devise_id", "montant", "moyen_paiement", "statut", "plaque", "date_creation", "date_confirmation", "reference_externe", "categorie_id"]
 
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     montant = db.Column(Numeric(14,2), nullable=False)
-    devise = db.Column(db.String(10), nullable=False)
+    devise_id = db.Column(db.Integer, db.ForeignKey("devises.id"), nullable=False)
+    devise = db.relationship("Devise")
     moyen_paiement = db.Column(db.String(50))   # ex: "espece", "mobile_money", "carte"
     statut = db.Column(db.String(50), default="en_attente")  # en_attente, confirme, annule, echec
     plaque = db.Column(db.String(50))            # immatriculation, si disponible
@@ -29,11 +30,10 @@ class Transaction(db.Model):
     quart_id = db.Column(db.Integer, db.ForeignKey("quarts_de_travail.id"), nullable=True)
     quart = db.relationship("QuartDeTravail", back_populates="transactions")
 
-    voie_id = db.Column(db.Integer, db.ForeignKey("voies.id"), nullable=False)
-    voie = db.relationship("Voie")
+    categorie_id = db.Column(db.Integer, db.ForeignKey("categories_vehicules.id"), nullable=False)
+    categorie = db.relationship("CategorieVehicule", back_populates="transactions")
 
     evenements = db.relationship("Evenement", back_populates="transaction", cascade="all, delete-orphan")
-    passages = db.relationship("PassageVehicule", back_populates="transaction", cascade="all, delete-orphan")
     
     # lien optionnel vers LigneReglement (reconciliation)
     ligne_reglement = db.relationship("LigneReglement", back_populates="transaction", uselist=False)

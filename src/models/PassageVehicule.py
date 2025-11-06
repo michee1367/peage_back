@@ -10,9 +10,9 @@ from datetime import datetime, timezone
 # ------------------------
 class PassageVehicule(db.Model):
     __tablename__ = "passage_vehicules"
-    __fillables__ = ["plaque", "transaction_id"]
-    __showables__= ["plaque", "transaction_id"]
-    __rel_showables__= ["transaction"]
+   # __fillables__ = ["plaque", "transaction_id"]
+   # __showables__= ["plaque", "transaction_id"]
+   # __rel_showables__= ["transaction"]
 
     id = db.Column(db.Integer, primary_key=True)
     plaque = db.Column(db.String(50))

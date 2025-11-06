@@ -17,6 +17,7 @@ class CategorieVehicule(db.Model):
     regle = db.Column(JSONB)   # JSON décrivant la règle (ex: {"essieux":2, "poids_max":3500})
 
     tarifs = db.relationship("Tarif", back_populates="categorie", cascade="all, delete-orphan")
+    transactions = db.relationship("Transaction", back_populates="categorie", cascade="all, delete-orphan")
     
     
     def getWording(self) :

@@ -10,13 +10,15 @@ from datetime import datetime, timezone
 # ------------------------
 class LigneReglement(db.Model):
     __tablename__ = "lignes_reglement"
-    __fillables__ = ["reference_externe", "montant", "statut", "nombre_lignes", "transaction_id", "fichier_id"]
-    __showables__= ["reference_externe", "montant", "statut", "nombre_lignes"]
-    __rel_showables__= ["transaction", "fichier"]
+    __fillables__ = ["reference_externe", "devise_id", "montant", "statut", "nombre_lignes", "transaction_id", "fichier_id"]
+    __showables__= ["reference_externe","devise_id", "montant", "statut", "nombre_lignes"]
+    __rel_showables__= ["transaction", "fichier", "devise"]
 
     id = db.Column(db.Integer, primary_key=True)
     reference_externe = db.Column(db.String(255), nullable=False, index=True)
     montant = db.Column(Numeric(14,2), nullable=False)
+    devise_id = db.Column(db.Integer, db.ForeignKey("devises.id"), nullable=False)
+    devise = db.relationship("Devise")
     statut = db.Column(db.String(50))   # ex: "SUCCESS", "FAILED", "PENDING"
     transaction_id = db.Column(UUID(as_uuid=True), db.ForeignKey("transactions.id"), nullable=True)
     

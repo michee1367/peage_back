@@ -14,7 +14,8 @@ class Tarif(db.Model):
     __rel_showables__= ["categorie"]
 
     id = db.Column(db.Integer, primary_key=True)
-    devise = db.Column(db.String(10), nullable=False)
+    devise_id = db.Column(db.Integer, db.ForeignKey("devises.id"), nullable=False)
+    devise = db.relationship("Devise")
     montant = db.Column(Numeric(14, 2), nullable=False)
     date_debut_validite = db.Column(Date)
     date_fin_validite = db.Column(Date)

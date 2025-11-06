@@ -13,6 +13,7 @@ from routes.auth import auth
 #from routes.notification import notification
 #from routes.settings_lang import settings_lang
 from routes.pic import pic_route
+from routes.kpi import kpi_route
 #from routes.visit import visit
 #from routes.doc import doc_route
 #from routes.tiles import tiles
@@ -102,6 +103,8 @@ app.register_blueprint(model_api, url_prefix='/models')
 #app.register_blueprint(settings_unit, url_prefix='/settings_units')
 #app.register_blueprint(settings_lang, url_prefix='/settings_langs')
 app.register_blueprint(pic_route, url_prefix='/pics')
+app.register_blueprint(kpi_route, url_prefix='/kpis')
+
 #app.register_blueprint(doc_route, url_prefix='/docs')
 
 

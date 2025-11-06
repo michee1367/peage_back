@@ -39,6 +39,8 @@ class User(db.Model):
     # Méthode pour convertir le modèle en dictionnaire
     quarts = db.relationship("QuartDeTravail", back_populates="utilisateur")
     fichiers = db.relationship("FichierReglement", back_populates="utilisateur")
+    versements = db.relationship("Versement", back_populates="utilisateur")
+    collectes = db.relationship("Collecte", back_populates="utilisateur")
     
     def to_dict(self):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}

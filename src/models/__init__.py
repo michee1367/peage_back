@@ -26,9 +26,12 @@ from models.QuartDeTravail import QuartDeTravail
 from models.Tarif import Tarif
 from models.Transaction import Transaction
 from models.Vehicule import Vehicule
-from models.Voie import Voie
+from models.Route import Route
 from models.Fournisseur import Fournisseur
-from models.PassageVehicule import PassageVehicule
+#from models.PassageVehicule import PassageVehicule
+from models.Versement import Versement
+from models.Devise import Devise
+from models.Collecte import Collecte
 
 #from models.UserAgent import UserAgent
 #from models.Office import Office

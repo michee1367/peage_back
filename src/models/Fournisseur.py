@@ -17,7 +17,6 @@ class Fournisseur(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nom = db.Column(db.String(255), nullable=False)
     identifiant = db.Column(db.String(150), unique=True, nullable=False)
-    mot_de_passe_hash = db.Column(db.String(512), nullable=False)
 
     fichiers = db.relationship("FichierReglement", back_populates="fournisseur")
     

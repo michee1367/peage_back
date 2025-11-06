@@ -9,7 +9,7 @@ from models import db
 # ------------------------
 class QuartDeTravail(db.Model):
     __tablename__ = "quarts_de_travail"
-    __rel_showables__= ["voie", "caissier"]
+    __rel_showables__= ["poste", "utilisateur", "versement"]
     __fillables__ = ["heure_ouverture", "heure_fermeture", "montant_cloture", "poste_id", "utilisateur_id"]
     __showables__= ["heure_ouverture", "heure_fermeture", "montant_cloture", "utilisateur_id"]
 
@@ -26,6 +26,7 @@ class QuartDeTravail(db.Model):
     utilisateur = db.relationship("User", back_populates="quarts")
 
     transactions = db.relationship("Transaction", back_populates="quart", cascade="all, delete-orphan")
+    versements = db.relationship("Versement", back_populates="quart", cascade="all, delete-orphan")
     
     
     def getWording(self) :
